@@ -1,0 +1,311 @@
+/* 1. BRAND COLORS & VARIABLES */
+:root {
+    --bg-odd: #ffffff;
+    --bg-even: #f8fafc;
+    --t-heading: #0f172a;
+    --t-body: #334155;
+    --t-muted: #64748b;
+    --accent: #10b981; /* Consistent Emerald Green */
+    --accent-soft: rgba(16, 185, 129, 0.08);
+    --card-bg: #ffffff;
+    --border: rgba(0, 0, 0, 0.06);
+}
+
+/* 2. CORE TRANSITIONS & SNAP SCROLLING */
+/* This restores the smooth, "app-like" feel of the site */
+* {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease,
+                background-color 0.3s ease,
+                opacity 0.4s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background-color: var(--bg-odd);
+    color: var(--t-body);
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* 3. ALIGNMENT: SECTION STRUCTURE */
+section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center; /* Vertical alignment */
+    justify-content: center; /* Horizontal alignment */
+    padding: 2rem;
+    background-color: var(--bg-odd);
+}
+
+section:nth-child(even) {
+    background-color: var(--bg-even);
+}
+
+/* 4. HOME SECTION: BOLD IMPACT */
+#home h1 {
+    font-weight: 800 !important;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    letter-spacing: -0.03em;
+    color: var(--t-heading);
+}
+
+#home p, #home .lead, #home .text-muted {
+    font-weight: 700 !important;
+    color: var(--t-body) !important;
+}
+
+/* 5. ICON CONSISTENCY (Locked to Green) */
+i, .card-icon i, .ethic-stat i, .connect-card i {
+    color: var(--accent) !important;
+    display: inline-block;
+}
+
+/* 6. UNIVERSAL CARD ARCHITECTURE */
+/* Standardizes About, Experience, and Connect cards */
+.about-card-modern, .card, .ethic-stat, .connect-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 24px;
+    padding: 2.5rem;
+    height: 100%; /* Ensures cards in the same row are equal height */
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* THE "LIFT" TRANSITION (Hover Effect) */
+.about-card-modern:hover, 
+.card:hover, 
+.ethic-stat:hover, 
+.connect-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--accent) !important;
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+}
+
+/* 7. CONNECT SECTION: REFINED ALIGNMENT */
+.connect-card {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-even);
+    border-radius: 20px; /* Modern "Squircle" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.connect-card:hover .icon-box {
+    background: var(--accent-soft);
+}
+
+.connect-card i {
+    font-size: 2.2rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* 8. TYPOGRAPHY UTILS */
+h1, h2, h3, h4, .nav-link, .fw-bold {
+    color: var(--t-heading) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.text-muted {
+    color: var(--t-muted) !important;
+}
+footer {
+    scroll-snap-align: end; /* Ensures the scroll snap doesn't skip the footer */
+    background: var(--bg-odd);
+}
+
+footer p {
+    transition: none !important; /* No need for transitions on static footer text */
+}
+
+/* 1. SKILL CARD REFINEMENT */
+.skill-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 24px;
+    padding: 3rem 2.5rem !important; /* Significant internal spacing */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 2. PROGRESS BAR STYLING */
+.progress {
+    background-color: var(--bg-even);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--accent) !important; /* Consistent Emerald */
+    border-radius: 10px;
+    /* This makes the bar fill up smoothly when the page loads */
+    transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* 3. TEXT ACCENT */
+.text-accent {
+    color: var(--accent);
+}
+
+/* 4. ICON BOX CONSISTENCY */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: var(--accent-soft); /* Light green tint */
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box i {
+    font-size: 2rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ensure skill headers are properly spaced */
+.skill-item span {
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+}
+/* 1. ETHICS CARD SPECIFICS */
+.border-md-none {
+    border-right: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+    .border-md-none {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2rem;
+    }
+}
+
+.ethic-stat-sm {
+    background: var(--bg-even);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--t-body);
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.ethic-stat-sm i {
+    font-size: 1rem !important;
+    margin-bottom: 0 !important;
+    color: var(--accent) !important;
+}
+
+/* 2. REINFORCING THE ICON BOX */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: var(--accent-soft);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. BOLD HIGHLIGHTS */
+strong, .text-accent {
+    color: var(--accent) !important;
+}
+
+/* 1. ABOUT CARD STYLE */
+.about-card-modern {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 32px; /* Smooth rounded corners from your image */
+    padding: 4rem 3rem;  /* Extra padding for breathability */
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+/* 2. LARGE ICON CIRCLE */
+.icon-circle-large {
+    width: 120px;
+    height: 120px;
+    background-color: var(--accent); /* Your Brand Green */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem; /* Centered with space below */
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+    transition: transform 0.4s ease;
+}
+
+.icon-circle-large i {
+    font-size: 4rem !important; /* Huge icons as requested */
+    color: white !important;
+    margin-bottom: 0 !important;
+}
+
+/* 3. HOVER EFFECTS */
+.about-card-modern:hover {
+    transform: translateY(-15px);
+    border-color: var(--accent) !important;
+    box-shadow: 0 25px 50px rgba(16, 185, 129, 0.1);
+}
+
+.about-card-modern:hover .icon-circle-large {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* 4. TYPOGRAPHY */
+.about-card-modern h3 {
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    color: var(--t-heading);
+}
+
+.about-card-modern p {
+    line-height: 1.8;
+    font-size: 1rem;
+}
+.experience-card, .project-card {
+    text-align: left; /* Projects usually look better left-aligned */
+    align-items: flex-start; /* Aligns the GitHub link to the left */
+}
+/* Email Copy Feedback Styling */
+#copyEmail {
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+#copyEmail:active {
+    transform: scale(0.95); /* Shinks slightly when clicked */
+}
+
+#emailStatus {
+    transition: all 0.3s ease;
+}
